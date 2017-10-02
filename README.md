@@ -9,7 +9,7 @@ StitchLite communicates with Shopify and Vend’s respective APIs to download pr
 
 Generate application using [this script](https://gist.github.com/connor11528/fcfbdb63bc9633a54f40f0a66e3d3f2e)
 
-### Connect to Shopify
+### Set up Shopify
 
 Sign up for Shopify [free trial](https://www.shopify.com/) and create a store.
 
@@ -61,6 +61,27 @@ public function up()
 ```
 
 Run the migration with `php artisan migrate`
+
+### Connect to Shopify 
+
+We're going to use a [shopify API wrapper package](https://github.com/joshrps/laravel-shopify-API-wrapper) and install it through composer.
+
+```
+$ composer require "rocket-code/shopify":"~2.0"
+```
+
+The ecosystem for PHP surrounding Shopify as not as developed as other languages. I found [this post](http://gavinballard.com/building-shopify-apps-with-php/) helpful in navigating the PHP shopify landscape. 
+
+Make sure to add the package to the array of supported providers in **config/app.php**
+
+```
+...
+RocketCode\Shopify\ShopifyServiceProvider::class
+```
+
+Once the package is installed we can connect StitchLite to get the shopify products we created.
+
+
 
 
 
