@@ -79,15 +79,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Welcome to StitchLite
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/connor11528/StitchLite">Github</a>
+                    <a href="https://help.shopify.com/api/getting-started/api-credentials#generate-private-app-credentials">Shopify Docs</a>
+                    <a href="https://docs.vendhq.com/">Vend Docs</a>
+                    <a href="http://connorleech.info/">About</a>
                 </div>
             </div>
         </div>
