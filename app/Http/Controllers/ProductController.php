@@ -3,10 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Shopify;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Protect methods to make sure users are authenticated
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
+    public function connect_shopify()
+    {
+
+        $shopUrl = "employbl.myshopify.com";
+        $scope = ["write_products","read_orders"];
+        $redirectUrl = "http://localhost:8000/process_shopify_data";
+
+        // Gets products:
+        // https://employbl.myshopify.com/admin/products.json
+
+        $shopify = Shopify::setShopUrl($shopUrl);
+
+        return response()->json($shopify);
+    }
 
     /**
      * Syncs all sales channels to pull in product updates to Stitch Lite

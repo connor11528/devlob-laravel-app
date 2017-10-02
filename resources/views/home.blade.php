@@ -14,9 +14,9 @@
                         </div>
                     @endif
 
-                    <div class='btn btn-success'>Connect Shopify</div>
-
-                    <div class='btn btn-primary'>Connect Vend</div>
+                    <connect-service service='Shopify' btnclass='btn-success'></connect-service>
+                    <connect-service service='Vend' btnclass='btn-primary'></connect-service>
+                    <refresh-products></refresh-products>
                 </div>
             </div>
 

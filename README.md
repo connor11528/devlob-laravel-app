@@ -81,6 +81,10 @@ RocketCode\Shopify\ShopifyServiceProvider::class
 
 Once the package is installed we can connect StitchLite to get the shopify products we created.
 
+PHP but non Laravel:
+- http://oauth2-client.thephpleague.com/providers/thirdparty/
+- https://github.com/multidimension-al/oauth2-shopify
+
 
 
 

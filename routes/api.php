@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/connect/shopify', 'ProductController@connect_shopify');
+
 Route::get('/sync', 'ProductController@sync');
 
 Route::get('/products', 'ProductController@index');
