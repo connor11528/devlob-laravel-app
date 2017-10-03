@@ -177,9 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        RocketCode\Shopify\ShopifyServiceProvider::class,
-        Oseintow\Shopify\ShopifyServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
+        App\Providers\ShopifyServiceProvider::class,
+        // RocketCode\Shopify\ShopifyServiceProvider::class,
+        // Oseintow\Shopify\ShopifyServiceProvider::class,
+        // Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
@@ -230,7 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Shopify' => Oseintow\Shopify\Facades\Shopify::class,
+        // 'Shopify' => Oseintow\Shopify\Facades\Shopify::class,
+        'ShopifyFacade' => App\Facades\ShopifyFacade::class
 
     ],
 

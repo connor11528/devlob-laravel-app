@@ -9,20 +9,14 @@ export default {
     props: ['service', 'btnclass'],
     methods: {
         connectShopify(){
-            console.log('connect shopify');
 
-            const data = {
-                name: 'Shopify',
-                redirect: 'https://employbl.myshopify.com/admin/oauth/authorize'
-            };
-
-            axios.post('/oauth/clients', data)
-                .then(response => {
-                    console.log(response.data);
+            axios.post('/api/connect/shopify')
+                .then((res) => {
+                    console.log(res.data);
                 })
-                .catch (response => {
-                    // List errors on response...
-                });
+                .catch(err => {
+                    console.error(err)
+                })
         },
         connectVend(){
             // https://docs.vendhq.com/v0.9/reference

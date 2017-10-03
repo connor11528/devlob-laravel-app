@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Shopify;
+// use Shopify;
+use ShopifyFacade;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,17 +21,18 @@ class ProductController extends Controller
 
     public function connect_shopify()
     {
-
-        $shopUrl = "employbl.myshopify.com";
-        $scope = ["write_products","read_orders"];
-        $redirectUrl = "http://localhost:8000/process_shopify_data";
-
         // Gets products:
         // https://employbl.myshopify.com/admin/products.json
 
-        $shopify = Shopify::setShopUrl($shopUrl);
+        $config = array(
+            'ShopUrl' => 'employbl.myshopify.com',
+            'ApiKey' => 'eb2c00eb6734af48d6ed86b5866ba2d3', // ***YOUR-PRIVATE-API-KEY***
+            'Password' => 'dba4169229e2284f9082a6ce0e3ab441', // ***YOUR-PRIVATE-API-PASSWORD***
+        );
 
-        return response()->json($shopify);
+        $shopify = ShopifyFacade::config($config);
+
+        return $shopify->Product->get();
     }
 
     /**
