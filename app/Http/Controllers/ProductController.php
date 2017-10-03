@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-// use Shopify;
 use ShopifyFacade;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class ProductController extends Controller
 {
@@ -54,6 +54,18 @@ class ProductController extends Controller
 
         return Product::all();
 
+    }
+
+    public function connect_vend()
+    {
+
+        $vendCreds = [
+            'client_id' => 'hFimy0FfHMFRq9F8UWtItYAY8GWeSPj5',
+            'client_secret' => 'QlrkDbqgpzaMYipUN07sflRgXSF4CNsb',
+            'redirect_uri' => 'http://localhost:8000/vend_callback'
+        ];
+
+        return redirect('https://secure.vendhq.com/connect?response_type=code&client_id='. $vendCreds['client_id'] .'&redirect_uri=http://localhost:8000/vend_callback');
     }
 
     /**

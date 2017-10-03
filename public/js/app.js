@@ -42360,7 +42360,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['service', 'btnclass'],
     methods: {
         connectShopify: function connectShopify() {
-
+            console.log('fire shop');
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/connect/shopify').then(function (res) {
                 window.location.reload();
             }).catch(function (err) {
@@ -42368,10 +42368,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         connectVend: function connectVend() {
+            console.log('fire vend');
             // https://docs.vendhq.com/v0.9/reference
 
             // https://secure.vendhq.com/connect?response_type=code&client_id={client_id}&redirect_uri={redirect_uri}&state={state}
-
         }
     }
 });
@@ -42386,7 +42386,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { class: ["btn", _vm.btnclass], on: { click: _vm.connectShopify } },
+    {
+      class: ["btn", _vm.btnclass],
+      on: {
+        click: function($event) {
+          _vm.service == "Shopify" ? _vm.connectShopify() : _vm.connectVend()
+        }
+      }
+    },
     [_vm._v("Connect " + _vm._s(_vm.service))]
   )
 }

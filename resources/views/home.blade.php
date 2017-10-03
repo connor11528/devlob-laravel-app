@@ -15,8 +15,13 @@
                     @endif
 
                     <connect-service service='Shopify' btnclass='btn-success'></connect-service>
+                    
+                    <!--
                     <connect-service service='Vend' btnclass='btn-primary'></connect-service>
-                    <refresh-products></refresh-products>
+                    <refresh-products></refresh-products> 
+                    -->
+
+                    <a class='btn btn-primary' href='https://secure.vendhq.com/connect?response_type=code&client_id=hFimy0FfHMFRq9F8UWtItYAY8GWeSPj5&redirect_uri=http://localhost:8000/vend_callback'>Authorize Vend</a>
                 </div>
             </div>
 

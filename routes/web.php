@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// callback for connecting to vend
+Route::get('/vend_callback', 'HomeController@index');

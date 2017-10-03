@@ -80,5 +80,19 @@ In this case I am selling hats and stickers on Vend and Shopify platforms. The h
 
 "Employbl Tshirt" (SKU of 2) is sold on Shopfy but not sold on Vend.
 
+### Vend Developer Account
+
+We'll also need to create a [Vend Developer Account](https://developers.vendhq.com/developer/sign-up). This is in addition to and separate from our Vend merchant account.
+
+Vend requires that we use [OAuth2 Authorization Code Grant](https://tools.ietf.org/html/rfc6749#section-4.1) to connect to their API. Create a new application in the developer portal:
+
+![](https://i.imgur.com/vR4do4t.png)
+
+
+
+## Connect Vend products
+
+
+
 
 
