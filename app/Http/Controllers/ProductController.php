@@ -31,8 +31,29 @@ class ProductController extends Controller
         );
 
         $shopify = ShopifyFacade::config($config);
+        $products = $shopify->Product->get();
 
-        return $shopify->Product->get();
+        // add products to database
+        for ($i = 0; $i < count($products); $i++) {
+            $details = $products[$i]['variants'][0];
+
+            // check if item with same sku exists
+            $product = Product::where('sku', '=', $details['sku'])->first();
+
+            // if does not exist add it to db
+            if($product == null){
+                Product::create([
+                    'name' => $products[$i]['title'],
+                    'sku' => $details['sku'],
+                    'quantity' => $details['inventory_quantity'],
+                    'price' => $details['price'] * 100
+                ]);
+            }
+
+        }
+
+        return Product::all();
+
     }
 
     /**

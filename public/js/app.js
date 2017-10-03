@@ -42362,7 +42362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         connectShopify: function connectShopify() {
 
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/connect/shopify').then(function (res) {
-                console.log(res.data);
+                window.location.reload();
             }).catch(function (err) {
                 console.error(err);
             });

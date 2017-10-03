@@ -25,33 +25,30 @@
                     All Products
                 </div>
 
-                <passport-clients></passport-clients>
-
-                <passport-authorized-clients></passport-authorized-clients>
-
-                <passport-personal-access-tokens></passport-personal-access-tokens>
-
-                <div class='panel-body'>
-                    @forelse($products as $product)  
-                        <table class='table-striped'>
-                            <thead>
+                <div class='panel-body'>  
+                    <table class='table-striped'>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>SKU</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($products as $product)
                                 <tr>
-                                    <th>Product Name</th>
-                                    <th>SKU</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <td>{{ $product['name'] }}</td>
+                                    <td>{{ $product['sku'] }}</td>
+                                    <td>{{ $product['quantity'] }}</td>
+                                    <td>{{ $product['price'] }}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    @empty
-                        <p>You currently do not have any products to display. <a href='#'>Sync now</a></p>
-                    @endforelse
+                            @empty
+                                <p>You currently do not have any products to display. <a href='#'>Sync now</a></p>
+                            @endforelse
+                        </tbody>
+                    </table>
+                    
                 </div>
             </div>
         </div>

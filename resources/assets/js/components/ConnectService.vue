@@ -12,7 +12,7 @@ export default {
 
             axios.post('/api/connect/shopify')
                 .then((res) => {
-                    console.log(res.data);
+                    window.location.reload();
                 })
                 .catch(err => {
                     console.error(err)
