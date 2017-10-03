@@ -52,7 +52,7 @@ public function up()
     Schema::create('products', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name');
-        $table->integer('sku');
+        $table->integer('sku')->unique();
         $table->integer('quantity');
         $table->integer('price'); // price in cents
         $table->timestamps();
@@ -64,62 +64,21 @@ Run the migration with `php artisan migrate`
 
 ### Connect to Shopify 
 
-We're going to use a [shopify API wrapper package](https://github.com/joshrps/laravel-shopify-API-wrapper) and install it through composer.
+Using [phpclassic/php-shopify](https://github.com/phpclassic/php-shopify) to grab shopify products. 
 
-```
-$ composer require "rocket-code/shopify":"~2.0"
-```
+Create custom facade and register in app service provider and register in **config/app.php**. Call method to grab products in controller and add those products to the products database table.
 
-The ecosystem for PHP surrounding Shopify as not as developed as other languages. I found [this post](http://gavinballard.com/building-shopify-apps-with-php/) helpful in navigating the PHP shopify landscape. 
+When the user clicks connect with Connect with Shopify it'll store their products from shopify in the stitchlite database and trigger a hard refresh, displaying them to user on the home page.
 
-Make sure to add the package to the array of supported providers in **config/app.php**
+### Add products to Vend
 
-```
-...
-RocketCode\Shopify\ShopifyServiceProvider::class
-```
+Add some new products to a [Vend account](https://www.vendhq.com/us/). Some will have the same SKU as the shopify products, others will be uniquely sold on vend.
 
-Once the package is installed we can connect StitchLite to get the shopify products we created.
+![](https://i.imgur.com/MEE1D7i.png)
 
-PHP but non Laravel:
-- http://oauth2-client.thephpleague.com/providers/thirdparty/
-- https://github.com/multidimension-al/oauth2-shopify
+In this case I am selling hats and stickers on Vend and Shopify platforms. The hats and stickers have the same SKU across platforms (1 for stickers, 3 for hats). I am also selling "Special Vend Product" on Vend with an SKU of specialvendproduct. The "Special Vend Product" is not sold on Shopify. 
 
-### Passport 
-
-```
-$ php artisan passport:install
-Encryption keys generated successfully.
-Personal access client created successfully.
-Client ID: 1
-Client Secret: 98mZdWYU9jlTAsIJnIfqZDuDj1G3zRmJ7zAAYq0k
-Password grant client created successfully.
-Client ID: 2
-Client Secret: PKkxpk3YATwg6AZBsMKwJWgPOhZx0iDSGHnBAfAG
-```
-
-Create client: 
-
-```
-php artisan passport:client
-
- Which user ID should the client be assigned to?:
- > 1
-
- What should we name the client?:
- > Shopify
-
- Where should we redirect the request after authorization? [http://localhost/auth/callback]:
- > 
-
-New client created successfully.
-Client ID: 5
-Client secret: CZ1M0VxXReiFmLuzNhFUqojZLq62TAWo5r4yWx14
-```
-
-
-
-
+"Employbl Tshirt" (SKU of 2) is sold on Shopfy but not sold on Vend.
 
 
 
