@@ -85,6 +85,38 @@ PHP but non Laravel:
 - http://oauth2-client.thephpleague.com/providers/thirdparty/
 - https://github.com/multidimension-al/oauth2-shopify
 
+### Passport 
+
+```
+$ php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client Secret: 98mZdWYU9jlTAsIJnIfqZDuDj1G3zRmJ7zAAYq0k
+Password grant client created successfully.
+Client ID: 2
+Client Secret: PKkxpk3YATwg6AZBsMKwJWgPOhZx0iDSGHnBAfAG
+```
+
+Create client: 
+
+```
+php artisan passport:client
+
+ Which user ID should the client be assigned to?:
+ > 1
+
+ What should we name the client?:
+ > Shopify
+
+ Where should we redirect the request after authorization? [http://localhost/auth/callback]:
+ > 
+
+New client created successfully.
+Client ID: 5
+Client secret: CZ1M0VxXReiFmLuzNhFUqojZLq62TAWo5r4yWx14
+```
+
 
 
 

@@ -11,13 +11,24 @@ export default {
         connectShopify(){
             console.log('connect shopify');
 
-            axios.post('/api/connect/shopify')
-                .then(res => {
-                    console.log(res.data)
+            const data = {
+                name: 'Shopify',
+                redirect: 'https://employbl.myshopify.com/admin/oauth/authorize'
+            };
+
+            axios.post('/oauth/clients', data)
+                .then(response => {
+                    console.log(response.data);
                 })
-                .catch(err => {
-                    console.error(err);
-                })
+                .catch (response => {
+                    // List errors on response...
+                });
+        },
+        connectVend(){
+            // https://docs.vendhq.com/v0.9/reference
+            
+            // https://secure.vendhq.com/connect?response_type=code&client_id={client_id}&redirect_uri={redirect_uri}&state={state}
+
         }
     }
 }

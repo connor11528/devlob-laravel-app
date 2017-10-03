@@ -12,7 +12,7 @@ export default {
             console.log('connect shopify');
 
             // get products from shopify
-            axios.get('https://employbl.myshopify.com/admin/products.json')
+            axios.get('/oauth/authorize')
                 .then(res => {
                     console.log(res.data)
                 })
