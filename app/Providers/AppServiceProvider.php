@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\ProductRepository;
+use App\Repositories\EloquentProduct;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // EloquentProduct is default implementation of Product Repository
+        $this->app->singleton(ProductRepository::class, EloquentProduct::class);
     }
 }

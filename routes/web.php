@@ -19,5 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// callback for connecting to vend
-Route::get('/vend_callback', 'HomeController@index');
+Route::group(['prefix' => 'products'], function(){
+
+   Route::get('/{id?}', [
+       'uses' => 'ProductController@index',
+       'as' => 'products.index'
+   ]);
+
+   Route::post('store', [
+       'uses' => 'ProductController@store',
+       'as' => 'products.store'
+   ]);
+
+   Route::patch('{id}/update', [
+       'uses' => 'ProductController@update',
+       'as' => 'products.update'
+   ]);
+
+   Route::delete('{id}/delete', [
+       'uses' => 'ProductController@destroy',
+       'as' => 'products.delete'
+   ]);
+});
