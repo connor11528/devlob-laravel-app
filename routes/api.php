@@ -30,3 +30,30 @@ Route::get('/products', 'ProductController@index');
 
 Route::get('/products/{product}', 'ProductController@show');
 
+
+// From this tutorial: https://www.cloudways.com/blog/rest-api-laravel-passport-authentication/
+
+Route::get('/login','ApiController@accessToken');
+
+Route::group(['middleware' => ['web','auth:api']], function()
+
+{
+
+    Route::post('/todo/','ApiController@store');
+
+    Route::get('/todo/','ApiController@index');
+
+    Route::get('/todo/{todo}','ApiController@show');
+
+    Route::put('/todo/{todo}','ApiController@update');
+
+    Route::delete('/todo/{todo}','ApiController@destroy');
+
+});
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+    return $request->user();
+
+});
+
