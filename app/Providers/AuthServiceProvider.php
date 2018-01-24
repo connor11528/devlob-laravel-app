@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Laravel\Passport\Passport;
 
 use Illuminate\Support\Facades\Gate;
@@ -27,6 +28,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        // By default, Passport issues long-lived access tokens that never need to be refreshed
+        // Here we configure a shorter token lifetime
+        Passport::routes(function ($router) {
+            $router->forAccessTokens();             // create access tokens
+            $router->forPersonalAccessTokens();     // create personal tokens
+            $router->forTransientTokens();          // creates route for refreshing tokens
+        });
+
+        Passport::tokensExpireIn(Carbon::now()->addMinutes(10));
+        Passport::refreshTokensExpireIn(Carbon::now()->addDays(10));
     }
 }
