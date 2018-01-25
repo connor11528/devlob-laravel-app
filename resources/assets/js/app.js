@@ -8,10 +8,21 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+import Router from './routes.js'
 import Auth from './packages/Auth';
 
 Vue.use(Auth);
+
+// frontend middleware for checking auth
+Router.beforeEach((to, from, each) => {
+    if(to.matched.some(record => record.meta.forVisitors)){
+        if(Vue.auth.isAuthenticated()){
+            next({
+                path: '/feed'
+            })
+        } else next()
+    } else next()
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,5 +49,6 @@ Vue.component(
 );
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: Router
 });
